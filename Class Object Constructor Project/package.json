@@ -1,0 +1,19 @@
+{
+  "name": "npm",
+  "version": "1.0.0",
+  "description": "c",
+  "main": "app.js",
+  "scripts": {
+    "build:css": "tailwind build src/main.css -o dist/css/tailwind.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "clear"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^1.1.2"
+  },
+  "dependencies": {}
+}

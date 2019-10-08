@@ -48,7 +48,6 @@ function clearForm(e) {
 
 /* function alert(e) {
     if (userAlias === '') {
-
     }
 }
  */
@@ -80,4 +79,3 @@ function removeAvenger(e) {
     if()
 }
  */
-
