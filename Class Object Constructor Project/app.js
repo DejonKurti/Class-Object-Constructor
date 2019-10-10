@@ -42,6 +42,22 @@ const Winny = new Person(17, 'Winny');
 //seperate event handler for removing/deleting
 
 class Scientist {
-    constructor(name, )
-}
+    constructor(name, field, ageToday, birthCountry, nobelWinner){
+        this.name = name;
+        this.field = field;
+        this.ageToday = ageToday;
+        this.birthCountry = birthCountry;
+        this.nobelWinner = nobelWinner;
+    }
+    calculateBirthYear(){
+    return 2019 - this.ageToday;
+}};
 
+const Einstein = new Scientist('Albert Einstein', 'Theoretical Physics', 140, 'Austria', true);
+
+console.log(Einstein);
+
+
+/* class UI {
+    ui.addScientisttoList
+} */

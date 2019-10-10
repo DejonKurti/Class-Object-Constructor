@@ -23,7 +23,7 @@ html{
     animation: moveInBottom .5s ease-out .75s;
     animation-fill-mode: backwards;
 }
-
+s
 .btn:hover{
     transform: translateY(-.3rem);
     box-shadow: 0 1.0rem 2rem rgba(0,0,0.2);
