@@ -29,7 +29,7 @@
 //seperate event handler for removing/deleting
 
 class Scientist {
-    constructor(name, field, birthYear, birthCountry, nobelWinner) {
+    constructor(name, field, birthYear, birthCountry, nobelWinner, image) {
         this.name = name;
         this.field = field;
         this.birthYear = birthYear;
@@ -38,13 +38,21 @@ class Scientist {
         }
         this.birthCountry = birthCountry;
         this.nobelWinner = nobelWinner;
+        this.image = image;
 }};
 
-const Einstein = new Scientist('Albert Einstein', 'Theoretical Physics', 2018, 'Austria', true);
+/* const Einstein = new Scientist('Albert Einstein', 'Theoretical Physics', 2018, 'Austria', true);
+ */
+//console.log(Einstein); 
 
-console.log(Einstein); 
-
-
-/* class UI {
-    ui.addScientisttoList
-} */
+class UI {
+    //ui.addScientisttoList //make it the button and add event listener
+    constructor(form, formName, formField, formBirthYear, formBirthCountry, formNobelWinner, addScientist) {
+        this.form = document.querySelector('#scientist-form');
+        this.formName = document.querySelector('full-name');
+        this.formField = document.querySelector('#field');
+        //this.formBirthYear = document.querySelector('#age')
+        this.formBirthCountry = document.querySelector('#birth-country');
+        this.formNobelWinner = document.querySelector('#nobel-winner');
+        this.addScientist = document.querySelector('#submit');
+} 
