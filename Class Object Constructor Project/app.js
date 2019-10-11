@@ -1,16 +1,3 @@
-/* class Person {
-    constructor(age, name){
-        this.age = age;
-        this.name = name;
-    }
-    calculateBirthYear(){
-    return 2019 - this.age;
-}};
-
-const Winny = new Person(17, 'Winny');
-
-
- */
 
 //one class to create the object i.e. person, album, movie **Model
 //take arguments
@@ -42,20 +29,20 @@ const Winny = new Person(17, 'Winny');
 //seperate event handler for removing/deleting
 
 class Scientist {
-    constructor(name, field, ageToday, birthCountry, nobelWinner){
+    constructor(name, field, birthYear, birthCountry, nobelWinner) {
         this.name = name;
         this.field = field;
-        this.ageToday = ageToday;
+        this.birthYear = birthYear;
+        this.age = function(){
+            return new Date().getUTCFullYear() - this.birthYear;
+        }
         this.birthCountry = birthCountry;
         this.nobelWinner = nobelWinner;
-    }
-    calculateBirthYear(){
-    return 2019 - this.ageToday;
 }};
 
-const Einstein = new Scientist('Albert Einstein', 'Theoretical Physics', 140, 'Austria', true);
+const Einstein = new Scientist('Albert Einstein', 'Theoretical Physics', 2018, 'Austria', true);
 
-console.log(Einstein);
+console.log(Einstein); 
 
 
 /* class UI {
