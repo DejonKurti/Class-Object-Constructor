@@ -46,45 +46,84 @@ const Einstein = new Scientist('Albert Einstein', 'Theoretical Physics', 2018, '
     } */
 
 class UI {
-    //ui.addScientisttoList //make it the button and add event listener
-    //constructor(form, formName, formField, formBirthYear, formBirthCountry, formNobelWinner, addScientist) 
-    constructor(form, formName, formField, formAge, formBirthCountry, formNobelWinner, formImage, display) {  
-        const form = document.querySelector('#scientist-form');
-        const formName = document.querySelector('full-name');
-        const formField = document.querySelector('#field');
-        const formAge = document.querySelector('#age')
-        const formBirthCountry = document.querySelector('#birth-country');
-        const formNobelWinner = document.querySelector('#nobel-winner');
-        const formImage = document.querySelector('#image');
-        const display = document.querySelector('.display'); 
+    addScientistToList(scientist) {
+        const display = document.querySelector('.display');
+
+        let html = `<div class="display-scientist">
+            <div class="display-full-name">
+                Albert Einstein
+            </div>
+            <div class="display-field">
+                Theoretical Physics
+            </div>
+            <div class="display-age">
+                140
+            </div>
+            <div class="display-birth-country">
+                Austria
+            </div>
+            <div class="display-nobel>
+                True
+            </div>
+            <div class="display-image">
+                <img src="https://cdn.mos.cms.futurecdn.net/c7dppKDbG3JXuMfybV5tUX.jpg">
+            </div>
+            <div class="remove-scientist">
+                <p class="remove-scientist">Remove Scientist &#10006;</p>
+            </div>
+        </div>`;
+    
+        let newHtml = html.replace('%full-name%', Scientist.name);
+        newHtml = newHtml.replace('%field%', Scientist.field);
+        newHtml = newHtml.replace('%age-today%', Scientist.age);
+        newHtml = newHtml.replace('%birth-country%', Scientist.birthCountry);
+        newHtml = newHtml.replace('%nobel%', Scientist.nobelWinner);
+        //console.log('is the event firing?');
+        newHtml = newHtml.replace('%url%', Scientist.image);
+        display.insertAdjacentHTML('beforeend', newHtml);
     }
+    
+    clearForm(form) {
+        form.reset();
+    }
+    
+    removeScientist(e) {
+        if (e.target.parentElement.classList.contains('remove-scientist')) {
+            e.target.parentElement.parentElement.remove();
+            //console.log(e.target.parentElement);
+        }
 };
+}
 
-//const newUI = new UI();
+//put the following into the controller--separate function with an event listener
+document.getElementById('form').addEventListener('submit', function(e){
+    const name = document.getElementById('name').value;
+    const field = document.getElementById('field').value;
+    const birthYear = document.getElementById('birthYear');
+    const birthCountry = document.getElementById('birthCountry');
+    const nobelWinner = document.getElementById('nobelWinner');
+    const image = document.getElementById('image');
 
-function eventListeners() {
+    const newScientist = new Scientist(name, field, birthYear, birthCountry, nobelWinner, image);
+
+}
+const newUI = new UI();
+
+/* function eventListeners() {
     form.addEventListener('submit', displayScientist);
     form.addEventListener('submit', clearForm);
     display.addEventListener('click', removeScientist);
 }
-eventListeners();  
+eventListeners();   */
 
 
 /* //Controller 
-
-
-
-
-
-
-
         let formField = '';
         let formAge = '';
         let formBirthCountry = '';
         let formNobelWinner = '';
         let formImage = '';
         
-
 function eventListeners(){ 
     form.addEventListener('submit', displayScientist);
     form.addEventListener('submit', clearForm);
@@ -94,7 +133,7 @@ eventListeners();
 }
 */
 
-function displayScientist(e) {
+/* function displayScientist(e) {
     let html = `<div class="display-scientist">
         <div class="display-full-name">
             Albert Einstein
@@ -139,4 +178,4 @@ function removeScientist(e) {
         e.target.parentElement.parentElement.remove();
         //console.log(e.target.parentElement);
     }
-}
+} */
