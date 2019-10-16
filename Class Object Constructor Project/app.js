@@ -37,13 +37,8 @@ class Scientist {
 };
 
 //instantiate
-const Einstein = new Scientist('Albert Einstein', 'Theoretical Physics', 2018, 'Austria', true);
+//const Einstein = new Scientist('Albert Einstein', 'Theoretical Physics', 2018, 'Austria', true);
 //console.log(newScientist); 
-
-/* const scientists = [];
-    function newScientist(name, field, birthYear, birthCountry, nobelWinner, image) {
-        Scientists.push(new Scientist(name, field, birthYear, birthCountry, nobelWinner, image));
-    } */
 
 class UI {
     addScientistToList(scientist) {
@@ -72,7 +67,7 @@ class UI {
                 <p class="remove-scientist">Remove Scientist &#10006;</p>
             </div>
         </div>`;
-    
+
         let newHtml = html.replace('%full-name%', Scientist.name);
         newHtml = newHtml.replace('%field%', Scientist.field);
         newHtml = newHtml.replace('%age-today%', Scientist.age);
@@ -82,21 +77,21 @@ class UI {
         newHtml = newHtml.replace('%url%', Scientist.image);
         display.insertAdjacentHTML('beforeend', newHtml);
     }
-    
+
     clearForm(form) {
         form.reset();
     }
-    
+
     removeScientist(e) {
         if (e.target.parentElement.classList.contains('remove-scientist')) {
             e.target.parentElement.parentElement.remove();
             //console.log(e.target.parentElement);
         }
-};
+    };
 }
 
 //put the following into the controller--separate function with an event listener
-document.getElementById('form').addEventListener('submit', function(e){
+document.getElementById('form').addEventListener('submit', function (e) {
     const name = document.getElementById('name').value;
     const field = document.getElementById('field').value;
     const birthYear = document.getElementById('birthYear');
@@ -104,10 +99,15 @@ document.getElementById('form').addEventListener('submit', function(e){
     const nobelWinner = document.getElementById('nobelWinner');
     const image = document.getElementById('image');
 
-    const newScientist = new Scientist(name, field, birthYear, birthCountry, nobelWinner, image);
+    const Scientist = new Scientist(name, field, birthYear, birthCountry, nobelWinner, image);
 
-}
-const newUI = new UI();
+    const UI = new UI();
+    console.log(ui);
+
+    ui.addScientistToList(scientist);
+    ui.clearForm();
+    e.preventDefault;
+});
 
 /* function eventListeners() {
     form.addEventListener('submit', displayScientist);
@@ -116,66 +116,12 @@ const newUI = new UI();
 }
 eventListeners();   */
 
-
-/* //Controller 
-        let formField = '';
-        let formAge = '';
-        let formBirthCountry = '';
-        let formNobelWinner = '';
-        let formImage = '';
-        
-function eventListeners(){ 
+/*
+function eventListeners(){
     form.addEventListener('submit', displayScientist);
     form.addEventListener('submit', clearForm);
     display.addEventListener('click', removeScientist);
 }
-eventListeners(); 
+eventListeners();
 }
 */
-
-/* function displayScientist(e) {
-    let html = `<div class="display-scientist">
-        <div class="display-full-name">
-            Albert Einstein
-        </div>
-        <div class="display-field">
-            Theoretical Physics
-        </div>
-        <div class="display-age">
-            140
-        </div>
-        <div class="display-birth-country">
-            Austria
-        </div>
-        <div class="display-nobel>
-            True
-        </div>
-        <div class="display-image">
-            <img src="https://cdn.mos.cms.futurecdn.net/c7dppKDbG3JXuMfybV5tUX.jpg">
-        </div>
-        <div class="remove-scientist">
-            <p class="remove-scientist">Remove Scientist &#10006;</p>
-        </div>
-    </div>`;
-
-    let newHtml = html.replace('%full-name%', formName.value);
-    newHtml = newHtml.replace('%field%', formField.value);
-    newHtml = newHtml.replace('%age-today%', formAge.value);
-    newHtml = newHtml.replace('%birth-country%', formBirthCountry.value);
-    newHtml = newHtml.replace('%nobel%', formNobelWinner.value);
-    console.log('is the event firing?');
-    newHtml = newHtml.replace('%url%', formImage.value);
-    display.insertAdjacentHTML('beforeend', newHtml);
-    e.preventDefault();
-}
-
-function clearForm(e) {
-    form.reset();
-}
-
-function removeScientist(e) {
-    if (e.target.parentElement.classList.contains('remove-scientist')) {
-        e.target.parentElement.parentElement.remove();
-        //console.log(e.target.parentElement);
-    }
-} */
