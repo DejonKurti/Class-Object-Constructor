@@ -13,31 +13,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 class Scientist {
     constructor(name, field, birthYear, birthCountry, nobelWinner, image) {
         this.name = name;
@@ -52,8 +27,6 @@ class Scientist {
         return new Date().getUTCFullYear() - this.birthYear;
     }
 };
-
-
 
 
 class UI {
@@ -89,13 +62,23 @@ class UI {
         newHtml = newHtml.replace('%age-today%', Scientist.age());
         newHtml = newHtml.replace('%birth-country%', Scientist.birthCountry);
         newHtml = newHtml.replace('%nobel%', Scientist.nobelWinner);
-        //console.log('is the event firing?');
         newHtml = newHtml.replace('%url%', Scientist.image);
-        display.insertAdjacentHTML('beforeend', newHtml);
+        document.getElementsByClassName('.remove-scientist')
+
+        
+        // .forEach(element => {
+        //     element.addEventListener('click', function(event) {
+        //         event.target.parentElement.parentElement.remove()
+        //         console.log('working')
+        //     }) 
+        // });
+        
+        
+        
     }
 
     clearForm(form) {
-        form.reset();
+        //form.reset();
     }
 
     removeScientist(e) {
@@ -105,23 +88,26 @@ class UI {
         }
     };
 }
+
 function addForm() {
     const name = document.getElementById('full-name').value;
     const field = document.getElementById('field').value;
-    //const birthYear = document.getElementById('birthYear').value;
     const birthCountry = document.getElementById('birth-country').value;
     const nobelWinner = document.getElementById('nobel').value;
     const image = document.getElementById('image').value;
 
     const scientist = new Scientist(name, field, 2019, birthCountry, nobelWinner, image);
     const ui = new UI();
-    console.log(ui);
+    //console.log(ui);
 
     ui.addScientistToList(scientist);
-    ui.clearForm();
-    //e.preventDefault;
+    //ui.clearForm();
 }
 
 
 
-document.getElementById('submit').addEventListener('click', addForm);
+document.getElementById('submit').addEventListener('click', function(event) {
+    addForm()
+    event.preventDefault()
+
+});
