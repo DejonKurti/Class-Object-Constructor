@@ -1,113 +1,66 @@
-//****View */ class for the UI which contains methods
-//creates/insert the HTML for the UI  [DISPLAY]
-//clear fields method
-//remove something/object
-//controller combines UI and model
-//event handler w/ function
-//get values
-//instantiate new class/object with variable name
-//instantiate a new UI const ui = new UI()
-//call relevant methods
-//seperate event handler for removing/deleting
-
-
-
-
 class Scientist {
-    constructor(name, field, birthYear, birthCountry, nobelWinner, image) {
+    constructor(name, field, birthYear, birthCountry, image) {
         this.name = name;
         this.field = field;
         this.birthYear = birthYear;
-
         this.birthCountry = birthCountry;
-        this.nobelWinner = nobelWinner;
         this.image = image;
     }
-    age = function () {
-        return new Date().getUTCFullYear() - this.birthYear;
-    }
-};
-
+}
 
 class UI {
-    addScientistToList(Scientist) {
+    addScientistToList(scientist) {
         const display = document.querySelector('.display');
 
-        let html = `<div class="display-scientist">
-            <div class="display-full-name">
-            %full-name%
-            </div>
-            <div class="display-field">
-            %field%
-            </div>
-            <div class="display-age">
-            %age-today%
-            </div>
-            <div class="display-birth-country">
-            %birth-country%
-            </div>
-            <div class="display-nobel>
-            %nobel%
-            </div>
-            <div class="display-image">
-                <img src="%url%">
-            </div>
-            <div class="remove-scientist">
-                <p class="remove-scientist">Remove Scientist &#10006;</p>
-            </div>
-        </div>`;
-
-        let newHtml = html.replace('%full-name%', Scientist.name);
-        newHtml = newHtml.replace('%field%', Scientist.field);
-        newHtml = newHtml.replace('%age-today%', Scientist.age());
-        newHtml = newHtml.replace('%birth-country%', Scientist.birthCountry);
-        newHtml = newHtml.replace('%nobel%', Scientist.nobelWinner);
-        newHtml = newHtml.replace('%url%', Scientist.image);
-        document.getElementsByClassName('.remove-scientist')
-
-        
-        // .forEach(element => {
-        //     element.addEventListener('click', function(event) {
-        //         event.target.parentElement.parentElement.remove()
-        //         console.log('working')
-        //     }) 
-        // });
-        
-        
-        
+        let html = '<div class="display-scientist"><div class="display-name">%name%</div><div class="display-field">%field%</div><div class="display-birthYear">%birthYear%</div><div class="display-birthCountry">%birthCountry%</div><div class="display-image"><img src="%image%"alt=""></div><div class="remove-scientist">Remove Scientist X</div>'
+        let newHtml = html.replace('%name%', scientist.name);
+        newHtml = newHtml.replace('%field%', scientist.field);
+        newHtml = newHtml.replace('%birthYear%', scientist.birthYear);
+        newHtml = newHtml.replace('%birthCountry%', scientist.birthCountry);
+        newHtml = newHtml.replace('%image%', scientist.image);
+        document.querySelector('.display').insertAdjacentHTML('beforeend', newHtml);
     }
 
-    clearForm(form) {
-        //form.reset();
-    }
+    clearForm(){
+        form.reset();
+    } 
 
-    removeScientist(e) {
-        if (e.target.parentElement.classList.contains('remove-scientist')) {
-            e.target.parentElement.parentElement.remove();
-            //console.log(e.target.parentElement);
+    removeScientist(target){
+        if (target.className === 'remove-scientist') {
+            target.parentElement.remove();
         }
-    };
+    } 
 }
 
-function addForm() {
-    const name = document.getElementById('full-name').value;
+document.getElementById('form').addEventListener('submit', function(e){
+    const name = document.getElementById('name').value;
     const field = document.getElementById('field').value;
-    const birthCountry = document.getElementById('birth-country').value;
-    const nobelWinner = document.getElementById('nobel').value;
-    const image = document.getElementById('image').value;
+    const birthYear = document.getElementById('birthYear'.value);
+    const birthCountry = document.getElementById('birthCountry'.value);
+    const image = document.getElementById('image'.value);
 
-    const scientist = new Scientist(name, field, 2019, birthCountry, nobelWinner, image);
+    const scientist = new Scientist(name, field, birthYear, birthCountry, image);
+    console.log(scientist);
     const ui = new UI();
-    //console.log(ui);
 
     ui.addScientistToList(scientist);
-    //ui.clearForm();
-}
 
+    ui.clearForm();
 
-
-document.getElementById('submit').addEventListener('click', function(event) {
-    addForm()
-    event.preventDefault()
-
+    e.preventDefault;
 });
+
+document.querySelector('.display').addEventListener('click', function(e){
+    const ui = new UI();
+
+    ui.removeScientist(e.target);
+
+    ui.clearForm();
+
+    e.preventDefault();
+})
+
+
+
+
+
